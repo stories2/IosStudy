@@ -8,7 +8,7 @@
 
 import UIKit
 
-class ViewController: UIViewController {
+class ViewController: UIViewController, UITextFieldDelegate {
     
     @IBOutlet weak var txtFieldName: UITextField!
     
@@ -17,6 +17,7 @@ class ViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
+        txtFieldName.delegate = self; // set up delegate this
     }
 
     override func didReceiveMemoryWarning() {
@@ -25,9 +26,14 @@ class ViewController: UIViewController {
     }
 
     @IBAction func btnPressMe(_ sender: UIButton) {
-        
+        txtFieldName.resignFirstResponder();
         hellWorldTitle.text = "God damn, " + txtFieldName.text!
     }
     
+    func textFieldShouldReturn(_ txtFieldName: UITextField) -> Bool {
+        txtFieldName.resignFirstResponder();
+        print("textFieldShouldReturn accepted");
+        return true;
+    }
 }
 
