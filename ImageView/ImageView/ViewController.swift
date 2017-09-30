@@ -14,6 +14,7 @@ class ViewController: UIViewController {
     @IBOutlet weak var btnChangeScale: UIButton!
     
     var isRotate = false
+    var isZoom = false
     var imgCharacterUp: UIImage?
     var imgCharacterDown: UIImage?
     
@@ -42,6 +43,25 @@ class ViewController: UIViewController {
         isRotate = !isRotate
     }
     @IBAction func BtnChangeScale(_ sender: UIButton) {
+        let scale:CGFloat = 2.0
+        var newWidth:CGFloat, newHeight:CGFloat
+        
+        if(isZoom) {
+            newWidth = imgView.frame.width / scale;
+            newHeight = imgView.frame.height / scale;
+            imgView.frame.size = CGSize(width: newWidth, height: newHeight);
+            
+            btnChangeScale.setTitle("Up scale", for: UIControlState.normal);
+        }
+        else {
+            newWidth = imgView.frame.width * scale;
+            newHeight = imgView.frame.height * scale;
+            imgView.frame.size = CGSize(width: newWidth, height: newHeight);
+            
+            btnChangeScale.setTitle("Down scale", for: UIControlState.normal);
+        }
+        
+        isZoom = !isZoom
     }
     
 }

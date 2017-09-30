@@ -24,7 +24,7 @@
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="pyP-iT-NpG">
                                 <rect key="frame" x="16" y="617" width="343" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" title="Change scale"/>
+                                <state key="normal" title="Up scale"/>
                                 <connections>
                                     <action selector="BtnChangeScale:" destination="BYZ-38-t0r" eventType="touchUpInside" id="wWj-9c-oiI"/>
                                 </connections>
