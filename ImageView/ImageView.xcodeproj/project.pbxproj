@@ -22,6 +22,8 @@
 		2C29A6E91F7FA9270039890F /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		2C29A6EC1F7FA9270039890F /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		2C29A6EE1F7FA9270039890F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		2C29A6F41F7FAC910039890F /* ic_flash_off.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = ic_flash_off.png; path = ../../../../../Downloads/ic_flash_off_black_24dp/ios/ic_flash_off.imageset/ic_flash_off.png; sourceTree = "<group>"; };
+		2C29A6F51F7FAE1A0039890F /* ic_flash_on.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = ic_flash_on.png; path = ../../../../../Downloads/ic_flash_on_black_24dp/ios/ic_flash_on.imageset/ic_flash_on.png; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -54,6 +56,8 @@
 		2C29A6E11F7FA9270039890F /* ImageView */ = {
 			isa = PBXGroup;
 			children = (
+				2C29A6F51F7FAE1A0039890F /* ic_flash_on.png */,
+				2C29A6F41F7FAC910039890F /* ic_flash_off.png */,
 				2C29A6E21F7FA9270039890F /* AppDelegate.swift */,
 				2C29A6E41F7FA9270039890F /* ViewController.swift */,
 				2C29A6E61F7FA9270039890F /* Main.storyboard */,
