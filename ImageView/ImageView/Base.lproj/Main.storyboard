@@ -17,7 +17,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="ic_flash_off.png" translatesAutoresizingMaskIntoConstraints="NO" id="nbr-Ie-sCF">
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="down.png" highlightedImage="down.png" translatesAutoresizingMaskIntoConstraints="NO" id="nbr-Ie-sCF">
                                 <rect key="frame" x="16" y="0.0" width="343" height="413"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </imageView>
@@ -52,6 +52,6 @@
         </scene>
     </scenes>
     <resources>
-        <image name="ic_flash_off.png" width="24" height="24"/>
+        <image name="down.png" width="5600" height="8000"/>
     </resources>
 </document>

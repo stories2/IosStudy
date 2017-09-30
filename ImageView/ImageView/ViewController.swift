@@ -13,9 +13,18 @@ class ViewController: UIViewController {
     @IBOutlet weak var switchImage: UISwitch!
     @IBOutlet weak var btnChangeScale: UIButton!
     
+    var isRotate = false
+    var imgCharacterUp: UIImage?
+    var imgCharacterDown: UIImage?
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
+        
+        imgCharacterUp = UIImage(named: "up.png")
+        imgCharacterDown = UIImage(named: "down.png")
+        
+        imgView.image = imgCharacterDown
     }
 
     override func didReceiveMemoryWarning() {
@@ -24,6 +33,13 @@ class ViewController: UIViewController {
     }
 
     @IBAction func SwitchImage(_ sender: UISwitch) {
+        if(isRotate) {
+            imgView.image = imgCharacterDown
+        }
+        else {
+            imgView.image = imgCharacterUp
+        }
+        isRotate = !isRotate
     }
     @IBAction func BtnChangeScale(_ sender: UIButton) {
     }
