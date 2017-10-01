@@ -37,11 +37,19 @@
                                 <date key="date" timeIntervalSinceReferenceDate="528522430.91185498">
                                     <!--2017-10-01 03:47:10 +0000-->
                                 </date>
+                                <connections>
+                                    <action selector="OnDateSelect:" destination="BYZ-38-t0r" eventType="valueChanged" id="fvd-A1-FxY"/>
+                                </connections>
                             </datePicker>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
+                    <connections>
+                        <outlet property="dtSelector" destination="Wqm-5w-hDB" id="6AG-iO-uHI"/>
+                        <outlet property="txtNowTime" destination="0Ja-j0-TCd" id="0A6-HE-JNE"/>
+                        <outlet property="txtSelectTime" destination="ba2-HA-M8g" id="DD7-Oy-2xl"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>

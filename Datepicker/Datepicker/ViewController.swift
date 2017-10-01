@@ -9,7 +9,10 @@
 import UIKit
 
 class ViewController: UIViewController {
-
+    @IBOutlet weak var txtNowTime: UILabel!
+    @IBOutlet weak var dtSelector: UIDatePicker!
+    @IBOutlet weak var txtSelectTime: UILabel!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
@@ -20,6 +23,13 @@ class ViewController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
 
-
+    @IBAction func OnDateSelect(_ sender: UIDatePicker) {
+        let datePickerView = sender
+        let dateFormatter = DateFormatter()
+        
+        dateFormatter.dateFormat = "yyyy-MM-dd HH:mm:ss EEE"
+        txtSelectTime.text = "Select time: " + dateFormatter.string(from: datePickerView.date)
+    }
+    
 }
 
