@@ -40,6 +40,12 @@ class ViewController: UIViewController {
     @objc func updateTime() {
         print(String(format: "Timer : %5d" , timeCounter))
         
+        let nowDate = Date()
+        let dateFormatter = DateFormatter()
+        
+        dateFormatter.dateFormat = "yyyy-MM-dd HH:mm:ss EEE"
+        txtNowTime.text = "Now time: " + dateFormatter.string(from: nowDate)
+        
         timeCounter += 1;
     }
 }
