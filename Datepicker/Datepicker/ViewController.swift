@@ -13,9 +13,15 @@ class ViewController: UIViewController {
     @IBOutlet weak var dtSelector: UIDatePicker!
     @IBOutlet weak var txtSelectTime: UILabel!
     
+    let timeSelector : Selector = #selector(ViewController.updateTime);
+    let intervalTime = 1.0
+    var timeCounter = 0
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
+        
+        Timer.scheduledTimer(timeInterval: intervalTime, target: self, selector: timeSelector, userInfo: nil, repeats: true)
     }
 
     override func didReceiveMemoryWarning() {
@@ -31,5 +37,10 @@ class ViewController: UIViewController {
         txtSelectTime.text = "Select time: " + dateFormatter.string(from: datePickerView.date)
     }
     
+    @objc func updateTime() {
+        print(String(format: "Timer : %5d" , timeCounter))
+        
+        timeCounter += 1;
+    }
 }
 
