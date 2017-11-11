@@ -13,6 +13,7 @@ class ViewController: UIViewController {
     var lastTouchPoint: CGPoint!
     var lineWidth: CGFloat = 2.0
     var lineColor = UIColor.gray.cgColor
+    var lastImage: UIImage!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -25,11 +26,13 @@ class ViewController: UIViewController {
     }
 
     @IBAction func btnOnBackClick(_ sender: UIButton) {
+        sketchImage.image = lastImage
     }
     
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         let touch = touches.first! as UITouch
         lastTouchPoint = touch.location(in: sketchImage)
+        lastImage = sketchImage.image
     }
     
     override func touchesMoved(_ touches: Set<UITouch>, with event: UIEvent?) {
