@@ -58,6 +58,18 @@ class ViewController: UIViewController {
     
     @IBAction func btnDrawCircle(_ sender: UIButton) {
         print("btn draw circle pressed");
+        
+        UIGraphicsBeginImageContext(drawImageView.frame.size)
+        let imageContext = UIGraphicsGetCurrentContext()
+        
+//        draw ellipse
+        imageContext?.setLineWidth(2.0)
+        imageContext?.setStrokeColor(UIColor.purple.cgColor)
+        imageContext?.addEllipse(in: CGRect(x: 50, y: 50, width: 200, height: 100))
+        imageContext?.strokePath()
+        
+        drawImageView.image = UIGraphicsGetImageFromCurrentImageContext()
+        UIGraphicsEndImageContext()
     }
     
     @IBAction func btnDrawHalfCircle(_ sender: UIButton) {
