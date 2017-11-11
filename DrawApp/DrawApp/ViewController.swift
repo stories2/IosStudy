@@ -42,6 +42,18 @@ class ViewController: UIViewController {
     
     @IBAction func btnDrawRect(_ sender: UIButton) {
         print("btn draw rect pressed");
+        
+        UIGraphicsBeginImageContext(drawImageView.frame.size)
+        let imageContext = UIGraphicsGetCurrentContext()
+        
+//        draw rect
+        imageContext?.setLineWidth(5.0)
+        imageContext?.setStrokeColor(UIColor.blue.cgColor)
+        imageContext?.addRect(CGRect(x: 50, y: 100, width: 200, height: 200))
+        imageContext?.strokePath()
+        
+        drawImageView.image = UIGraphicsGetImageFromCurrentImageContext()
+        UIGraphicsEndImageContext()
     }
     
     @IBAction func btnDrawCircle(_ sender: UIButton) {
