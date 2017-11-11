@@ -9,7 +9,10 @@
 import UIKit
 
 class ViewController: UIViewController {
-
+    @IBOutlet weak var txtMessage: UILabel!
+    @IBOutlet weak var txtTapCount: UILabel!
+    @IBOutlet weak var txtTouchCount: UILabel!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
