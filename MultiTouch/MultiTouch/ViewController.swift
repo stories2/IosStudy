@@ -15,6 +15,8 @@ class ViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        self.view.isMultipleTouchEnabled = true
         // Do any additional setup after loading the view, typically from a nib.
     }
 
@@ -23,6 +25,28 @@ class ViewController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
 
-
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        let touch = touches.first
+        
+        txtMessage.text = "Touches began"
+        txtTapCount.text = String(touch!.tapCount)
+        txtTouchCount.text = String(touches.count)
+    }
+    
+    override func touchesMoved(_ touches: Set<UITouch>, with event: UIEvent?) {
+        let touch = touches.first
+        
+        txtMessage.text = "Touches moved"
+        txtTapCount.text = String(touch!.tapCount)
+        txtTouchCount.text = String(touches.count)
+    }
+    
+    override func touchesEnded(_ touches: Set<UITouch>, with event: UIEvent?) {
+        let touch = touches.first
+        
+        txtMessage.text = "Touches ended"
+        txtTapCount.text = String(touch!.tapCount)
+        txtTouchCount.text = String(touches.count)
+    }
 }
 
