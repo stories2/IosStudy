@@ -24,6 +24,20 @@ class ViewController: UIViewController {
 
     @IBAction func btnDrawLine(_ sender: UIButton) {
         print("btn draw line pressed");
+        
+        UIGraphicsBeginImageContext(drawImageView.frame.size);
+        let imageContext = UIGraphicsGetCurrentContext();
+        
+//        draw line
+        imageContext?.setLineWidth(2.0)
+        imageContext?.setStrokeColor(UIColor.red.cgColor)
+        
+        imageContext?.move(to: CGPoint(x: 50, y: 50))
+        imageContext?.addLine(to: CGPoint(x: 250, y: 250))
+        imageContext?.strokePath()
+        
+        drawImageView.image = UIGraphicsGetImageFromCurrentImageContext()
+        UIGraphicsEndImageContext()
     }
     
     @IBAction func btnDrawRect(_ sender: UIButton) {
