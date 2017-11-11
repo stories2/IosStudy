@@ -10,6 +10,9 @@ import UIKit
 
 class ViewController: UIViewController {
     @IBOutlet weak var sketchImage: UIImageView!
+    var lastTouchPoint: CGPoint!
+    var lineWidth: CGFloat = 2.0
+    var lineColor = UIColor.gray.cgColor
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -24,5 +27,35 @@ class ViewController: UIViewController {
     @IBAction func btnOnBackClick(_ sender: UIButton) {
     }
     
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        let touch = touches.first! as UITouch
+        lastTouchPoint = touch.location(in: sketchImage)
+    }
+    
+    override func touchesMoved(_ touches: Set<UITouch>, with event: UIEvent?) {
+        let touch = touches.first! as UITouch
+        let currentTouchPoint = touch.location(in: sketchImage)
+        
+        UIGraphicsBeginImageContext(sketchImage.frame.size)
+        let graphicsContext = UIGraphicsGetCurrentContext()
+        graphicsContext?.setStrokeColor(lineColor)
+        graphicsContext?.setLineCap(CGLineCap.round)
+        graphicsContext?.setLineWidth(lineWidth)
+        
+        sketchImage.image?.draw(in: CGRect(x: 0, y: 0, width: sketchImage.frame.size.width, height: sketchImage.frame.size.height))
+        
+        graphicsContext?.move(to: lastTouchPoint)
+        graphicsContext?.addLine(to: currentTouchPoint)
+        graphicsContext?.strokePath()
+        
+        sketchImage.image = UIGraphicsGetImageFromCurrentImageContext()
+        UIGraphicsEndImageContext()
+        
+        lastTouchPoint = currentTouchPoint
+    }
+    
+    override func touchesEnded(_ touches: Set<UITouch>, with event: UIEvent?) {
+        
+    }
 }
 
