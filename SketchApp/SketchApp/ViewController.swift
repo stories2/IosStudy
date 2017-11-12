@@ -33,31 +33,35 @@ class ViewController: UIViewController {
     
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         let touch = touches.first! as UITouch
-        lastTouchPoint = touch.location(in: sketchImage)
-        lastImage = sketchImage.image
+        if(touch.type == UITouchType.stylus) {
+            lastTouchPoint = touch.location(in: sketchImage)
+            lastImage = sketchImage.image
+        }
     }
     
     override func touchesMoved(_ touches: Set<UITouch>, with event: UIEvent?) {
         let touch = touches.first! as UITouch
-        let currentTouchPoint = touch.location(in: sketchImage)
-        let pencilLineWidth = touch.force * lineWidth
-        
-        UIGraphicsBeginImageContext(sketchImage.frame.size)
-        let graphicsContext = UIGraphicsGetCurrentContext()
-        graphicsContext?.setStrokeColor(lineColor)
-        graphicsContext?.setLineCap(CGLineCap.round)
-        graphicsContext?.setLineWidth(pencilLineWidth)
-        
-        sketchImage.image?.draw(in: CGRect(x: 0, y: 0, width: sketchImage.frame.size.width, height: sketchImage.frame.size.height))
-        
-        graphicsContext?.move(to: lastTouchPoint)
-        graphicsContext?.addLine(to: currentTouchPoint)
-        graphicsContext?.strokePath()
-        
-        sketchImage.image = UIGraphicsGetImageFromCurrentImageContext()
-        UIGraphicsEndImageContext()
-        
-        lastTouchPoint = currentTouchPoint
+        if(touch.type == UITouchType.stylus) {
+            let currentTouchPoint = touch.location(in: sketchImage)
+            let pencilLineWidth = touch.force * lineWidth
+            
+            UIGraphicsBeginImageContext(sketchImage.frame.size)
+            let graphicsContext = UIGraphicsGetCurrentContext()
+            graphicsContext?.setStrokeColor(lineColor)
+            graphicsContext?.setLineCap(CGLineCap.round)
+            graphicsContext?.setLineWidth(pencilLineWidth)
+            
+            sketchImage.image?.draw(in: CGRect(x: 0, y: 0, width: sketchImage.frame.size.width, height: sketchImage.frame.size.height))
+            
+            graphicsContext?.move(to: lastTouchPoint)
+            graphicsContext?.addLine(to: currentTouchPoint)
+            graphicsContext?.strokePath()
+            
+            sketchImage.image = UIGraphicsGetImageFromCurrentImageContext()
+            UIGraphicsEndImageContext()
+            
+            lastTouchPoint = currentTouchPoint
+        }
     }
     
     override func touchesEnded(_ touches: Set<UITouch>, with event: UIEvent?) {
