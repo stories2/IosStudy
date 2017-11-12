@@ -40,6 +40,7 @@ class ViewController: UIViewController {
         else {
             sketchImageStackPoint = 0;
             sketchImageView.image = nil
+            lastImage.remove(at: 0)
         }
     }
     @IBAction func btnOnForwardClick(_ sender: UIButton) {
