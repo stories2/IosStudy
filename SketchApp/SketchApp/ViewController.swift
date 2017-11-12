@@ -13,7 +13,8 @@ class ViewController: UIViewController {
     var lastTouchPoint: CGPoint!
     var lineWidth: CGFloat = 2.0
     var lineColor = UIColor.gray.cgColor
-    var lastImage: UIImage!
+    var lastImage = [UIImage]()
+    var sketchImageStackPoint: Int = 0
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -26,7 +27,14 @@ class ViewController: UIViewController {
     }
 
     @IBAction func btnOnBackClick(_ sender: UIButton) {
-        sketchImage.image = lastImage
+        if(sketchImageStackPoint > 0) {
+            sketchImageStackPoint -= 1;
+            sketchImage.image = lastImage[sketchImageStackPoint]
+        }
+        else {
+            sketchImageStackPoint = 0;
+            sketchImage.image = nil
+        }
     }
     @IBAction func btnOnForwardClick(_ sender: UIButton) {
     }
@@ -35,7 +43,18 @@ class ViewController: UIViewController {
         let touch = touches.first! as UITouch
         if(touch.type == UITouchType.stylus) {
             lastTouchPoint = touch.location(in: sketchImage)
-            lastImage = sketchImage.image
+            let lastImageStackSize = lastImage.count
+            if(sketchImageStackPoint < lastImageStackSize - 1) {
+                print("stack point: ", sketchImageStackPoint, " last stack size: ", lastImageStackSize)
+                for indexOfSketchNumber in (sketchImageStackPoint + 1)...(lastImageStackSize - 1) {
+                    print("remove stack point: ", indexOfSketchNumber)
+                    lastImage.remove(at: sketchImageStackPoint + 1)
+                }
+            }
+            if(sketchImage.image != nil) {
+                lastImage.append(sketchImage.image!)
+                sketchImageStackPoint += 1;
+            }
         }
     }
     
