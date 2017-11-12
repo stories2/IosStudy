@@ -46,7 +46,7 @@ class ViewController: UIViewController {
         else {
             sketchImageStackPoint = 0;
             sketchImageView.image = nil
-            if(lastImage.count >= 1) {
+            if(lastImage.count == 1) {
                 lastImage.remove(at: 0)
             }
         }
@@ -121,11 +121,11 @@ class ViewController: UIViewController {
     override func touchesEnded(_ touches: Set<UITouch>, with event: UIEvent?) {
         let touch = touches.first! as UITouch
         
-        if(sketchImageView.image != nil) {
-            lastImage.append(sketchImageView.image!)
-            sketchImageStackPoint += 1;
-        }
         if(touch.type == UITouchType.stylus) {
+            if(sketchImageView.image != nil) {
+                lastImage.append(sketchImageView.image!)
+                sketchImageStackPoint += 1;
+            }
         }
         else if(touch.type == UITouchType.direct) {
             let currentTouchPoint = touch.location(in: sketchImageView)
