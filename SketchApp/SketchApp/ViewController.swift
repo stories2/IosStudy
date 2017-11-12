@@ -28,6 +28,8 @@ class ViewController: UIViewController {
     @IBAction func btnOnBackClick(_ sender: UIButton) {
         sketchImage.image = lastImage
     }
+    @IBAction func btnOnForwardClick(_ sender: UIButton) {
+    }
     
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         let touch = touches.first! as UITouch
@@ -38,12 +40,13 @@ class ViewController: UIViewController {
     override func touchesMoved(_ touches: Set<UITouch>, with event: UIEvent?) {
         let touch = touches.first! as UITouch
         let currentTouchPoint = touch.location(in: sketchImage)
+        let pencilLineWidth = touch.force * lineWidth
         
         UIGraphicsBeginImageContext(sketchImage.frame.size)
         let graphicsContext = UIGraphicsGetCurrentContext()
         graphicsContext?.setStrokeColor(lineColor)
         graphicsContext?.setLineCap(CGLineCap.round)
-        graphicsContext?.setLineWidth(lineWidth)
+        graphicsContext?.setLineWidth(pencilLineWidth)
         
         sketchImage.image?.draw(in: CGRect(x: 0, y: 0, width: sketchImage.frame.size.width, height: sketchImage.frame.size.height))
         
