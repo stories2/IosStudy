@@ -37,6 +37,10 @@ class ViewController: UIViewController {
         }
     }
     @IBAction func btnOnForwardClick(_ sender: UIButton) {
+        if(sketchImageStackPoint < lastImage.count - 1) {
+            sketchImageStackPoint += 1
+            sketchImage.image = lastImage[sketchImageStackPoint]
+        }
     }
     
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
@@ -50,10 +54,6 @@ class ViewController: UIViewController {
                     print("remove stack point: ", indexOfSketchNumber)
                     lastImage.remove(at: sketchImageStackPoint + 1)
                 }
-            }
-            if(sketchImage.image != nil) {
-                lastImage.append(sketchImage.image!)
-                sketchImageStackPoint += 1;
             }
         }
     }
@@ -85,6 +85,10 @@ class ViewController: UIViewController {
     
     override func touchesEnded(_ touches: Set<UITouch>, with event: UIEvent?) {
         
+        if(sketchImage.image != nil) {
+            lastImage.append(sketchImage.image!)
+            sketchImageStackPoint += 1;
+        }
     }
 }
 
