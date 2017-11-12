@@ -10,6 +10,9 @@ import UIKit
 
 class ViewController: UIViewController {
     @IBOutlet weak var sketchImageView: UIImageView!
+    @IBOutlet weak var txtMaxStackPoint: UILabel!
+    @IBOutlet weak var txtNowStackPoint: UILabel!
+    
     var lastTouchPoint: CGPoint!
     var lineWidth: CGFloat = 2.0
     var lineColor = UIColor.gray.cgColor
@@ -33,6 +36,9 @@ class ViewController: UIViewController {
     }
 
     @IBAction func btnOnBackClick(_ sender: UIButton) {
+        if(sketchImageStackPoint == lastImage.count) {
+            sketchImageStackPoint = lastImage.count - 1
+        }
         if(sketchImageStackPoint > 0) {
             sketchImageStackPoint -= 1;
             sketchImageView.image = lastImage[sketchImageStackPoint]
@@ -40,14 +46,20 @@ class ViewController: UIViewController {
         else {
             sketchImageStackPoint = 0;
             sketchImageView.image = nil
-            lastImage.remove(at: 0)
+            if(lastImage.count >= 1) {
+                lastImage.remove(at: 0)
+            }
         }
+        txtMaxStackPoint.text = String(lastImage.count)
+        txtNowStackPoint.text = String(sketchImageStackPoint)
     }
     @IBAction func btnOnForwardClick(_ sender: UIButton) {
         if(sketchImageStackPoint < lastImage.count - 1) {
             sketchImageStackPoint += 1
             sketchImageView.image = lastImage[sketchImageStackPoint]
         }
+        txtMaxStackPoint.text = String(lastImage.count)
+        txtNowStackPoint.text = String(sketchImageStackPoint)
     }
     
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
@@ -70,6 +82,8 @@ class ViewController: UIViewController {
             var sketchViewPoint:CGPoint = CGPoint(x: sketchViewX, y: sketchViewY)
             lastSketchViewPoint = sketchViewPoint
         }
+        txtMaxStackPoint.text = String(lastImage.count)
+        txtNowStackPoint.text = String(sketchImageStackPoint)
     }
     
     override func touchesMoved(_ touches: Set<UITouch>, with event: UIEvent?) {
@@ -120,6 +134,8 @@ class ViewController: UIViewController {
             
             moveSketchImageView(lastSketchViewPoint.x + gapWidth, transformY: lastSketchViewPoint.y + gapHeight)
         }
+        txtMaxStackPoint.text = String(lastImage.count)
+        txtNowStackPoint.text = String(sketchImageStackPoint)
     }
 }
 
