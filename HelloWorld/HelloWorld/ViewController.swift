@@ -11,6 +11,7 @@ import AVFoundation
 
 class ViewController: UIViewController, AVAudioPlayerDelegate {
     
+    //    MARK:- Variables
     var player: AVAudioPlayer!
     var timer: Timer!
     
@@ -18,6 +19,7 @@ class ViewController: UIViewController, AVAudioPlayerDelegate {
     @IBOutlet var playTimeLabel: UILabel!
     @IBOutlet var playTimeSlider: UISlider!
     
+    //    MARK:- methods
     func initializePlayer() {
         guard let soundAsset: NSDataAsset = NSDataAsset(name: "ncs-spectre") else {
             print("cannot load mp3 file")
