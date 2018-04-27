@@ -61,6 +61,34 @@ class ViewController: UIViewController, AVAudioPlayerDelegate {
         self.timer.invalidate()
         self.timer = nil
     }
+    
+    func audioPlayerDecodeErrorDidOccur(_ player: AVAudioPlayer, error: Error?) {
+        
+        guard let error: Error = error else {
+            print("audio player decode error!")
+            return
+        }
+        
+        let message:String
+        message = "audio player error \(error.localizedDescription)"
+        
+        let alert: UIAlertController = UIAlertController(title: "notice", message: message, preferredStyle: UIAlertControllerStyle.alert)
+        
+        let okAction: UIAlertAction = UIAlertAction(title: "ok", style: UIAlertActionStyle.default) { (action: UIAlertAction) -> Void in
+            self.dismiss(animated: true, completion: nil)
+        }
+        
+        alert.addAction(okAction)
+        
+        self.present(alert, animated: true, completion: nil)
+    }
+    
+    func audioPlayerDidFinishPlaying(_ player: AVAudioPlayer, successfully flag: Bool) {
+        self.playPauseBtn.isSelected = false
+        self.playTimeSlider.value = 0
+        self.updatePlayTimeLabel(time: 0)
+        self.invalidateTimer()
+    }
 
     override func viewDidLoad() {
         super.viewDidLoad()
