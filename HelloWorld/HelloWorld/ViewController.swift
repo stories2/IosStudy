@@ -9,6 +9,10 @@
 import UIKit
 
 class ViewController: UIViewController {
+    
+    @IBOutlet var playPauseBtn: UIButton!
+    @IBOutlet var playTimeLabel: UILabel!
+    @IBOutlet var playTimeSlider: UISlider!
 
     override func viewDidLoad() {
         super.viewDidLoad()
